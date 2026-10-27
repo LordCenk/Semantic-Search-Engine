@@ -1,0 +1,65 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: semantic-search-engine
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:semantic_search}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    open-in-view: false
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+# Search & HNSW Configuration
+search:
+  hnsw:
+    m: ${HNSW_M:16}
+    ef-construction: ${HNSW_EF_CONSTRUCTION:64}
+    ef-search: ${HNSW_EF_SEARCH:32}
+  embedding:
+    # Supported providers: fake, openai, ollama, rest
+    provider: ${EMBEDDING_PROVIDER:fake}
+    api-key: ${EMBEDDING_API_KEY:}
+    api-url: ${EMBEDDING_API_URL:https://api.openai.com/v1/embeddings}
+    model: ${EMBEDDING_MODEL:text-embedding-3-small}
+    dimensions: ${EMBEDDING_DIMENSIONS:128}
+    timeout-ms: ${EMBEDDING_TIMEOUT_MS:10000}
+
+# Swagger / OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+logging:
+  level:
+    root: INFO
+    com.aman.semanticsearch: INFO
+---
+# In-memory H2 profile for local dev when MySQL is not running, or for standalone testing
+spring:
+  config:
+    activate:
+      on-profile: h2
+  datasource:
+    url: jdbc:h2:mem:semantic_search;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update

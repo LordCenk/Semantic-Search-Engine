@@ -1,0 +1,149 @@
+# ==============================================================================
+# Build Artifacts & Binaries
+# ==============================================================================
+target/
+target
+build/
+build
+out/
+out
+bin/
+bin
+dist/
+dist
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# Allow Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Java Crash Logs & Profiling
+*.log
+logs/
+logs
+*.hprof
+hs_err_pid*
+replay_pid*
+
+# ==============================================================================
+# Secrets, Environment & Credentials
+# ==============================================================================
+# Block all .env variations except the committed example/template
+.env
+.env.*
+*.env
+!.env.example
+
+# Local Spring Boot Configuration Overrides
+application-local.properties
+application-local.yml
+application-local.yaml
+application-secret.properties
+application-secret.yml
+application-secret.yaml
+
+# Sensitive Keys, Certificates & Tokens
+*.pem
+*.key
+*.pkcs12
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+*credentials*
+*secret*
+secrets/
+secrets
+
+# ==============================================================================
+# IDE & Editor Configurations
+# ==============================================================================
+# IntelliJ IDEA
+.idea
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse / STS
+.apt_generated
+.apt_generated_test
+.classpath
+.factorypath
+.project
+.settings
+.settings/
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.built-jar-path
+
+# Visual Studio Code
+.vscode
+.vscode/
+
+# ==============================================================================
+# Database & In-Memory Storage
+# ==============================================================================
+*.db
+*.sqlite
+*.sqlite3
+*.mv.db
+*.trace.db
+
+# ==============================================================================
+# Python / Virtual Environment (Scripts & Benchmarks)
+# ==============================================================================
+__pycache__/
+__pycache__
+*.py[cod]
+*$py.class
+.venv/
+.venv
+venv/
+venv
+ENV/
+ENV
+env/
+env
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==============================================================================
+# Operating System & Temporary Files
+# ==============================================================================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~

@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:semantic_search_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+
+search:
+  hnsw:
+    m: 8
+    ef-construction: 32
+    ef-search: 16
+  embedding:
+    provider: fake
+    dimensions: 32
+
+logging:
+  level:
+    root: WARN
+    com.aman.semanticsearch: INFO
